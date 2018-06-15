@@ -1,0 +1,22 @@
+.box {
+	margin: 0;
+	padding: 0;
+	background: -moz-linear-gradient(-45deg, #f85032 0%, #f16f5c 50%, #f6290c 51%, #f02f17 71%, #e73827 100%);
+
+}
+
+
+
+.flex {
+	display: flex;
+	background-color: purple;
+	flex-wrap: wrap;
+
+
+}
+
+.screen {
+	height: 600px;
+	width:	600px;
+	border: solid;
+}

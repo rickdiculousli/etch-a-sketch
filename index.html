@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Etch A Sketch</title>
+
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+	<div class="box"></div>
+	<div class="screen">
+		<div class="flex">
+			
+		</div>
+
+	</div>
+
+
+</body>
+
+<script type="text/javascript">
+	// flexBox size size is 600px down and around.
+	const flexBox = document.querySelector('.flex');
+
+	function makeBox(border){
+		let boxDiv = document.createElement('div');
+		boxDiv.classList.add("box");
+		boxDiv.style.width = border + "px";
+		boxDiv.style.height = border + "px";
+
+		return boxDiv;
+
+	}
+
+	function makeGrid(row = 16, boxes = 16) {
+		let boxSize = (600 -600%boxes)/boxes;
+		
+
+		for (var i = 0; i < row*boxes; i++){
+
+				let box = makeBox(boxSize);
+				flexBox.appendChild(box);
+				console.log("added Box!");
+
+			}
+
+	}
+	makeGrid();
+			
+	function initialize() {
+
+	}
+
+
+</script>
+
+</html>
