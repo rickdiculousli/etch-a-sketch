@@ -8,6 +8,7 @@
 </head>
 <body>
 
+	<button id="reset" style="margin: 0 auto; display: block;">Reset</button>
 	<div class="box"></div>
 	<div class="screen">
 		<div class="flex">
@@ -21,7 +22,6 @@
 
 <script type="text/javascript">
 	// flexBox size size is 600px down and around.
-	const flexBox = document.querySelector('.flex');
 
 	function makeBox(border){
 		let boxDiv = document.createElement('div');
@@ -33,24 +33,61 @@
 
 	}
 
+
 	function makeGrid(row = 16, boxes = 16) {
 		let boxSize = (600 -600%boxes)/boxes;
-		
+		let flexBox = document.querySelector('.flex');
 
 		for (var i = 0; i < row*boxes; i++){
 
 				let box = makeBox(boxSize);
+				box.style.opacity = 0;
+				
+				box.addEventListener('mouseover', (e) => {
+					let dOpacity = e.target.style.opacity;
+					
+					dOpacity = parseFloat(dOpacity) + 0.1;
+					if(dOpacity > 1) dOpacity = 1;
+
+					e.target.style.opacity = dOpacity;
+
+
+				});
+
 				flexBox.appendChild(box);
 				console.log("added Box!");
 
 			}
 
-	}
-	makeGrid();
-			
-	function initialize() {
+
 
 	}
+
+	function resetGrid(){
+		let flex = document.querySelector(".flex");
+		flex.remove();
+		let screen = document.querySelector(".screen");
+		let newFlex = document.createElement("div");
+		newFlex.classList.add("flex");
+		screen.appendChild(newFlex);
+	}
+			
+	function initialize() {
+		makeGrid();
+		let button = document.querySelector('#reset');
+		button.addEventListener('click', (e) =>{
+			let dimension = prompt("What dimension would you like?", "16");
+
+				while(isNaN(dimension)){
+					dimension = prompt("Enter a valid dimension (integer)", "16");
+				}
+
+
+			resetGrid();
+			makeGrid(parseInt(dimension), parseInt(dimension));
+		})
+	}
+	initialize();
 
 
 </script>
